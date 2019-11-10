@@ -89,6 +89,77 @@
 					<div class="row">
 					    <div class="col-2">
 					    	<h5 class="card-text"><small class="text-muted">
+						    	Rating :
+						    </small></h5>
+					    </div>
+					    <div class="col-9">
+					    	<h5 class="card-text"><small class="text-muted">
+						    	<?php 
+						    		switch ($row['it_rating']) {
+								      case 1:
+								        echo "
+								          <span class='fa fa-star checked'></span>
+								          <span class='fa fa-star'></span>
+								          <span class='fa fa-star'></span>
+								          <span class='fa fa-star'></span>
+								          <span class='fa fa-star'></span>
+								        ";
+								        break;
+								      case 2:
+								        echo "
+								          <span class='fa fa-star checked'></span>
+								          <span class='fa fa-star checked'></span>
+								          <span class='fa fa-star'></span>
+								          <span class='fa fa-star'></span>
+								          <span class='fa fa-star'></span>
+								        ";
+								        break;
+								      case 3:
+								        echo "
+								          <span class='fa fa-star checked'></span>
+								          <span class='fa fa-star checked'></span>
+								          <span class='fa fa-star checked'></span>
+								          <span class='fa fa-star'></span>
+								          <span class='fa fa-star'></span>
+								        ";
+								        break;
+								      case 4:
+								        echo "
+								          <span class='fa fa-star checked'></span>
+								          <span class='fa fa-star checked'></span>
+								          <span class='fa fa-star checked'></span>
+								          <span class='fa fa-star checked'></span>
+								          <span class='fa fa-star'></span>
+								        ";
+								        break;
+								      case 5:
+								        echo "
+								          <span class='fa fa-star checked'></span>
+								          <span class='fa fa-star checked'></span>
+								          <span class='fa fa-star checked'></span>
+								          <span class='fa fa-star checked'></span>
+								          <span class='fa fa-star checked'></span>
+								        ";
+								        break;
+								                              
+								      default:
+								        echo "
+								          <span class='fa fa-star'></span>
+								          <span class='fa fa-star'></span>
+								          <span class='fa fa-star'></span>
+								          <span class='fa fa-star'></span>
+								          <span class='fa fa-star'></span>
+								        ";
+								        break;
+								    }
+						    	?>
+						    </small></h5>
+					    </div>
+					</div>
+					<br>
+					<div class="row">
+					    <div class="col-2">
+					    	<h5 class="card-text"><small class="text-muted">
 						    	Shipping : 
 						    </small></h5>
 					    </div>
