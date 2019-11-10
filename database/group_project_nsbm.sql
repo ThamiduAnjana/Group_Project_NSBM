@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Nov 06, 2019 at 08:05 PM
--- Server version: 10.2.28-MariaDB
--- PHP Version: 7.3.6
+-- Host: 127.0.0.1
+-- Generation Time: Nov 10, 2019 at 11:22 AM
+-- Server version: 10.1.34-MariaDB
+-- PHP Version: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -30,27 +30,33 @@ USE `has9674_nsbm`;
 -- Table structure for table `items_details`
 --
 
-CREATE TABLE `items_details` (
+DROP TABLE IF EXISTS `items_details`;
+CREATE TABLE IF NOT EXISTS `items_details` (
   `it_code` int(11) NOT NULL,
   `it_name` varchar(150) DEFAULT NULL,
   `it_qty` int(11) DEFAULT NULL,
-  `it_price` decimal(65,2) DEFAULT NULL,
-  `it_upprice` decimal(65,2) NOT NULL,
+  `it_price` decimal(65,2) NOT NULL,
+  `it_upprice` decimal(65,2) DEFAULT NULL,
   `it_color` varchar(255) DEFAULT NULL,
   `it_img1` varchar(255) DEFAULT NULL,
   `it_img2` varchar(255) NOT NULL,
   `it_img3` varchar(255) NOT NULL,
   `it_img4` varchar(255) NOT NULL,
   `it_description` varchar(255) DEFAULT NULL,
-  `it_rating` int(5) DEFAULT NULL
+  `it_rating` int(5) DEFAULT NULL,
+  PRIMARY KEY (`it_code`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `items_details`
 --
 
-INSERT INTO `items_details` (`it_code`, `it_name`, `it_qty`, `it_price`, `it_upprice`, `it_color`, `it_img1`, `it_img2`, `it_img3`, `it_img4`, `it_description`, `it_rating`) VALUES
-(1, 'watch', 20, 300.00, 150.00, 'black', 'index.jpeg', '', '', '', NULL, NULL);
+INSERT DELAYED INTO `items_details` (`it_code`, `it_name`, `it_qty`, `it_price`, `it_upprice`, `it_color`, `it_img1`, `it_img2`, `it_img3`, `it_img4`, `it_description`, `it_rating`) VALUES
+(1, 'Watch (Men)', 20, '300.00', '150.00', 'black', 'Item_01.png', '', '', '', 'Some quick example text to build on the card title and make up the bulk of the card\'s content.', 3),
+(2, 'Watch (Men)', 20, '300.00', '150.00', 'black', 'Item_02.png', '', '', '', 'Some quick example text to build on the card title and make up the bulk of the card\'s content.', 4),
+(3, 'Watch (Men)', 20, '300.00', '150.00', 'black', 'Item_03.png', '', '', '', 'Some quick example text to build on the card title and make up the bulk of the card\'s content.', 2),
+(4, 'Watch (Men)', 20, '300.00', '150.00', 'black', 'Item_04.png', '', '', '', 'Some quick example text to build on the card title and make up the bulk of the card\'s content.', 5),
+(5, 'Watch (Men)', 20, '300.00', '150.00', 'black', 'Item_05.jpeg', '', '', '', 'Some quick example text to build on the card title and make up the bulk of the card\'s content.', 1);
 
 -- --------------------------------------------------------
 
@@ -58,11 +64,13 @@ INSERT INTO `items_details` (`it_code`, `it_name`, `it_qty`, `it_price`, `it_upp
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
   `u_id` int(11) NOT NULL,
   `u_email` varchar(150) DEFAULT NULL,
   `u_password` varchar(8) DEFAULT NULL,
-  `status` varchar(20) NOT NULL
+  `status` varchar(20) NOT NULL,
+  PRIMARY KEY (`u_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -71,7 +79,8 @@ CREATE TABLE `users` (
 -- Table structure for table `users_details`
 --
 
-CREATE TABLE `users_details` (
+DROP TABLE IF EXISTS `users_details`;
+CREATE TABLE IF NOT EXISTS `users_details` (
   `id` int(11) NOT NULL,
   `u_id` int(11) DEFAULT NULL,
   `u_fname` varchar(50) DEFAULT NULL,
@@ -81,30 +90,9 @@ CREATE TABLE `users_details` (
   `u_province` varchar(50) DEFAULT NULL,
   `u_postalcode` varchar(20) DEFAULT NULL,
   `u_country` varchar(20) DEFAULT NULL,
-  `u_contactno` int(11) DEFAULT NULL
+  `u_contactno` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `items_details`
---
-ALTER TABLE `items_details`
-  ADD PRIMARY KEY (`it_code`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`u_id`);
-
---
--- Indexes for table `users_details`
---
-ALTER TABLE `users_details`
-  ADD PRIMARY KEY (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
