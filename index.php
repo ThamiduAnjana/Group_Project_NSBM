@@ -67,7 +67,8 @@
                         echo "<img src='images/".$row['it_img1']."' style='width: 200px;height: auto;' alt = '". $row['it_img1'] ."'>";
                     ?>
                     <div class="card-body">
-                      <h5 class="card-title"> <?= $row['it_name'] ?> </h5>
+                      <form method="POST" name="AddToCard" action="addtocard.php">
+                      <h5 class="card-title"> <?= $row['it_name'] ?> <input type="text" name="addcard" value="<?= $row['it_code'] ?>" hidden></h5>
                       <h5>
                         <span class="badge badge-danger">RS. <?= $row['it_upprice'] ?></span>
                         <?php 
@@ -86,8 +87,9 @@
                         <?php $item_code = 001 ?>
                         <?php include 'include/rating_include.php';?>
                       </p>
-                      <form method="POST" name="AddToCard" action="addtocard.php">
-                        <a href="#" class="btn btn-primary" value="<?= $row['it_code'] ?>">Add to card</a>
+                        <!-- <button type="button" class="btn btn-primary" value="<?= $row['it_code'] ?>" name="card1">Add to card</button> -->
+                        <!-- <a href="addtocard.php" class="btn btn-primary" value="<?= $row['it_code'] ?>" name="addcard">Add to card</a> -->
+                        <input class="btn btn-primary" type="submit" value="Add to card">
                       </form>
                       <?php
                          }
@@ -109,7 +111,8 @@
                         echo "<img src='images/".$row['it_img1']."' style='width: 200px;height: auto;' alt = '". $row['it_img1'] ."'>";
                     ?>
                     <div class="card-body">
-                      <h5 class="card-title"> <?= $row['it_name'] ?> </h5>
+                      <form method="POST" name="AddToCard" action="addtocard.php">
+                      <h5 class="card-title"> <?= $row['it_name'] ?> <input type="text" name="addcard" value="<?= $row['it_code'] ?>" hidden></h5>
                       <h5>
                         <span class="badge badge-danger">RS. <?= $row['it_upprice'] ?></span>
                         <?php 
@@ -128,8 +131,7 @@
                         <?php $item_code = 002 ?>
                         <?php include 'include/rating_include.php';?>
                       </p>
-                      <form method="POST" name="AddToCard" action="addtocard.php">
-                        <a href="#" class="btn btn-primary" value="<?= $row['it_code'] ?>">Add to card</a>
+                        <input class="btn btn-primary" type="submit" value="Add to card">
                       </form>
                       <?php
                          }
@@ -151,7 +153,8 @@
                         echo "<img src='images/".$row['it_img1']."' style='width: 200px;height: auto;' alt = '". $row['it_img1'] ."'>";
                     ?>
                     <div class="card-body">
-                      <h5 class="card-title"> <?= $row['it_name'] ?> </h5>
+                      <form method="POST" name="AddToCard" action="addtocard.php">
+                      <h5 class="card-title"> <?= $row['it_name'] ?> <input type="text" name="addcard" value="<?= $row['it_code'] ?>" hidden></h5>
                       <h5>
                         <span class="badge badge-danger">RS. <?= $row['it_upprice'] ?></span>
                         <?php 
@@ -170,8 +173,7 @@
                         <?php $item_code = 003 ?>
                         <?php include 'include/rating_include.php';?>
                       </p>
-                      <form method="POST" name="AddToCard" action="addtocard.php">
-                        <a href="#" class="btn btn-primary" value="<?= $row['it_code'] ?>">Add to card</a>
+                        <input class="btn btn-primary" type="submit" value="Add to card">
                       </form>
                       <?php
                          }
@@ -193,7 +195,8 @@
                         echo "<img src='images/".$row['it_img1']."' style='width: 200px;height: auto;' alt = '". $row['it_img1'] ."'>";
                     ?>
                     <div class="card-body">
-                      <h5 class="card-title"> <?= $row['it_name'] ?> </h5>
+                      <form method="POST" name="AddToCard" action="addtocard.php">
+                      <h5 class="card-title"> <?= $row['it_name'] ?> <input type="text" name="addcard" value="<?= $row['it_code'] ?>" hidden></h5>
                       <h5>
                         <span class="badge badge-danger">RS. <?= $row['it_upprice'] ?></span>
                         <?php 
@@ -212,8 +215,7 @@
                         <?php $item_code = 004 ?>
                         <?php include 'include/rating_include.php';?>
                       </p>
-                      <form method="POST" name="AddToCard" action="addtocard.php">
-                        <a href="#" class="btn btn-primary" value="<?= $row['it_code'] ?>">Add to card</a>
+                        <input class="btn btn-primary" type="submit" value="Add to card">
                       </form>
                       <?php
                          }
@@ -235,7 +237,8 @@
                         echo "<img src='images/".$row['it_img1']."' style='width: 200px;height: auto;' alt = '". $row['it_img1'] ."'>";
                     ?>
                     <div class="card-body">
-                      <h5 class="card-title"> <?= $row['it_name'] ?> </h5>
+                      <form method="POST" name="AddToCard" action="addtocard.php">
+                      <h5 class="card-title"> <?= $row['it_name'] ?> <input type="text" name="addcard" value="<?= $row['it_code'] ?>" hidden></h5>
                       <h5>
                         <span class="badge badge-danger">RS. <?= $row['it_upprice'] ?></span>
                         <?php 
@@ -254,8 +257,7 @@
                         <?php $item_code = 005 ?>
                         <?php include 'include/rating_include.php';?>
                       </p>
-                      <form method="POST" name="AddToCard" action="addtocard.php">
-                        <a href="#" class="btn btn-primary" value="<?= $row['it_code'] ?>">Add to card</a>
+                        <input class="btn btn-primary" type="submit" value="Add to card">
                       </form>
                       <?php
                          }
