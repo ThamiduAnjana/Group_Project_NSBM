@@ -1,19 +1,4 @@
-<!doctype html>
-<html lang="en">
-  <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <!-- Required meta tags -->
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/custom-style.css">
-
-    <title>Hello, world!</title>
-  </head>
-  <body>
   <?php include 'header.php';?>
     
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -83,15 +68,27 @@
                     ?>
                     <div class="card-body">
                       <h5 class="card-title"> <?= $row['it_name'] ?> </h5>
-                      <h5><span class="badge badge-danger">RS. <?= $row['it_upprice'] ?></span><small>
-                      <span class="badge badge-secondary" style="text-decoration: line-through;">RS. <?= $row['it_price'] ?></span></small></h5>
+                      <h5>
+                        <span class="badge badge-danger">RS. <?= $row['it_upprice'] ?></span>
+                        <?php 
+                          if($row['it_price'] != 0.00){
+                            echo "
+                              <small>
+                                <span class='badge badge-secondary' style='text-decoration: line-through;'>RS.".$row['it_price']."</span>
+                              </small>
+                            ";
+                          }
+                        ?>
+                      </h5>
                       <p class="card-text"><?= $row['it_description']?></p>
                       <p>
                         Rating :
                         <?php $item_code = 001 ?>
                         <?php include 'include/rating_include.php';?>
                       </p>
-                      <a href="#" class="btn btn-primary" value=" <?= $row['it_code'] ?> ">Add to card</a>
+                      <form method="POST" name="AddToCard" action="addtocard.php">
+                        <a href="#" class="btn btn-primary" value="<?= $row['it_code'] ?>">Add to card</a>
+                      </form>
                       <?php
                          }
                          //important you can use php tag like this <?= 
@@ -99,39 +96,171 @@
                     </div>
                   </div>
                   <div class="card" style="width: 18rem;">
-                    <img style="width: 200px;height: auto;" src="images/Item_01.png" class="card-img-top" alt="...">
+                    <?php
+                      //Add database into index.php
+                      require_once("database/connect.php");
+                      //first query (that you want to select)
+                      $query_one = "SELECT `it_code`, `it_name`, `it_qty`, `it_price`, `it_upprice`, `it_color`, `it_img1`, `it_img2`, `it_img3`, `it_img4`, `it_description`, `it_rating` FROM `items_details` WHERE it_code = 002";
+                      //query execute
+                      $result = mysqli_query($db, $query_one);  
+                      //Add while loop for first column data display and after display next column
+                      while ($row = mysqli_fetch_array($result)) {    
+                        //data
+                        echo "<img src='images/".$row['it_img1']."' style='width: 200px;height: auto;' alt = '". $row['it_img1'] ."'>";
+                    ?>
                     <div class="card-body">
-                      <h5 class="card-title">Item 01</h5>
-                      <span class="badge badge-danger">Rs.5000.00</span>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Add to card</a>
+                      <h5 class="card-title"> <?= $row['it_name'] ?> </h5>
+                      <h5>
+                        <span class="badge badge-danger">RS. <?= $row['it_upprice'] ?></span>
+                        <?php 
+                          if($row['it_price'] != 0.00){
+                            echo "
+                              <small>
+                                <span class='badge badge-secondary' style='text-decoration: line-through;'>RS.".$row['it_price']."</span>
+                              </small>
+                            ";
+                          }
+                        ?>
+                      </h5>
+                      <p class="card-text"><?= $row['it_description']?></p>
+                      <p>
+                        Rating :
+                        <?php $item_code = 002 ?>
+                        <?php include 'include/rating_include.php';?>
+                      </p>
+                      <form method="POST" name="AddToCard" action="addtocard.php">
+                        <a href="#" class="btn btn-primary" value="<?= $row['it_code'] ?>">Add to card</a>
+                      </form>
+                      <?php
+                         }
+                         //important you can use php tag like this <?= 
+                      ?>
                     </div>
                   </div>
                   <div class="card" style="width: 18rem;">
-                    <img style="width: 200px;height: auto;" src="images/Item_02.png" class="card-img-top" alt="...">
+                    <?php
+                      //Add database into index.php
+                      require_once("database/connect.php");
+                      //first query (that you want to select)
+                      $query_one = "SELECT `it_code`, `it_name`, `it_qty`, `it_price`, `it_upprice`, `it_color`, `it_img1`, `it_img2`, `it_img3`, `it_img4`, `it_description`, `it_rating` FROM `items_details` WHERE it_code = 003";
+                      //query execute
+                      $result = mysqli_query($db, $query_one);  
+                      //Add while loop for first column data display and after display next column
+                      while ($row = mysqli_fetch_array($result)) {    
+                        //data
+                        echo "<img src='images/".$row['it_img1']."' style='width: 200px;height: auto;' alt = '". $row['it_img1'] ."'>";
+                    ?>
                     <div class="card-body">
-                      <h5 class="card-title">Item 02</h5>
-                      <span class="badge badge-danger">Rs.5000.00</span>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Add to card</a>
+                      <h5 class="card-title"> <?= $row['it_name'] ?> </h5>
+                      <h5>
+                        <span class="badge badge-danger">RS. <?= $row['it_upprice'] ?></span>
+                        <?php 
+                          if($row['it_price'] != 0.00){
+                            echo "
+                              <small>
+                                <span class='badge badge-secondary' style='text-decoration: line-through;'>RS.".$row['it_price']."</span>
+                              </small>
+                            ";
+                          }
+                        ?>
+                      </h5>
+                      <p class="card-text"><?= $row['it_description']?></p>
+                      <p>
+                        Rating :
+                        <?php $item_code = 003 ?>
+                        <?php include 'include/rating_include.php';?>
+                      </p>
+                      <form method="POST" name="AddToCard" action="addtocard.php">
+                        <a href="#" class="btn btn-primary" value="<?= $row['it_code'] ?>">Add to card</a>
+                      </form>
+                      <?php
+                         }
+                         //important you can use php tag like this <?= 
+                      ?>
                     </div>
                   </div>
                   <div class="card" style="width: 18rem;">
-                    <img style="width: 200px;height: auto;" src="images/Item_03.png" class="card-img-top" alt="...">
+                    <?php
+                      //Add database into index.php
+                      require_once("database/connect.php");
+                      //first query (that you want to select)
+                      $query_one = "SELECT `it_code`, `it_name`, `it_qty`, `it_price`, `it_upprice`, `it_color`, `it_img1`, `it_img2`, `it_img3`, `it_img4`, `it_description`, `it_rating` FROM `items_details` WHERE it_code = 004";
+                      //query execute
+                      $result = mysqli_query($db, $query_one);  
+                      //Add while loop for first column data display and after display next column
+                      while ($row = mysqli_fetch_array($result)) {    
+                        //data
+                        echo "<img src='images/".$row['it_img1']."' style='width: 200px;height: auto;' alt = '". $row['it_img1'] ."'>";
+                    ?>
                     <div class="card-body">
-                      <h5 class="card-title">Item 03</h5>
-                      <span class="badge badge-danger">Rs.5000.00</span>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Add to card</a>
+                      <h5 class="card-title"> <?= $row['it_name'] ?> </h5>
+                      <h5>
+                        <span class="badge badge-danger">RS. <?= $row['it_upprice'] ?></span>
+                        <?php 
+                          if($row['it_price'] != 0.00){
+                            echo "
+                              <small>
+                                <span class='badge badge-secondary' style='text-decoration: line-through;'>RS.".$row['it_price']."</span>
+                              </small>
+                            ";
+                          }
+                        ?>
+                      </h5>
+                      <p class="card-text"><?= $row['it_description']?></p>
+                      <p>
+                        Rating :
+                        <?php $item_code = 004 ?>
+                        <?php include 'include/rating_include.php';?>
+                      </p>
+                      <form method="POST" name="AddToCard" action="addtocard.php">
+                        <a href="#" class="btn btn-primary" value="<?= $row['it_code'] ?>">Add to card</a>
+                      </form>
+                      <?php
+                         }
+                         //important you can use php tag like this <?= 
+                      ?>
                     </div>
                   </div>
                   <div class="card" style="width: 18rem;">
-                    <img style="width: 200px;height: auto;" src="images/Item_04.png" class="card-img-top" alt="...">
+                    <?php
+                      //Add database into index.php
+                      require_once("database/connect.php");
+                      //first query (that you want to select)
+                      $query_one = "SELECT `it_code`, `it_name`, `it_qty`, `it_price`, `it_upprice`, `it_color`, `it_img1`, `it_img2`, `it_img3`, `it_img4`, `it_description`, `it_rating` FROM `items_details` WHERE it_code = 005";
+                      //query execute
+                      $result = mysqli_query($db, $query_one);  
+                      //Add while loop for first column data display and after display next column
+                      while ($row = mysqli_fetch_array($result)) {    
+                        //data
+                        echo "<img src='images/".$row['it_img1']."' style='width: 200px;height: auto;' alt = '". $row['it_img1'] ."'>";
+                    ?>
                     <div class="card-body">
-                      <h5 class="card-title">Item 05</h5>
-                      <span class="badge badge-danger">Rs.5000.00</span>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Add to card</a>
+                      <h5 class="card-title"> <?= $row['it_name'] ?> </h5>
+                      <h5>
+                        <span class="badge badge-danger">RS. <?= $row['it_upprice'] ?></span>
+                        <?php 
+                          if($row['it_price'] != 0.00){
+                            echo "
+                              <small>
+                                <span class='badge badge-secondary' style='text-decoration: line-through;'>RS.".$row['it_price']."</span>
+                              </small>
+                            ";
+                          }
+                        ?>
+                      </h5>
+                      <p class="card-text"><?= $row['it_description']?></p>
+                      <p>
+                        Rating :
+                        <?php $item_code = 005 ?>
+                        <?php include 'include/rating_include.php';?>
+                      </p>
+                      <form method="POST" name="AddToCard" action="addtocard.php">
+                        <a href="#" class="btn btn-primary" value="<?= $row['it_code'] ?>">Add to card</a>
+                      </form>
+                      <?php
+                         }
+                         //important you can use php tag like this <?= 
+                      ?>
                     </div>
                   </div>
                 </div>
