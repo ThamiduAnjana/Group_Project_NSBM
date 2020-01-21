@@ -95,7 +95,7 @@ If customers want to know about new products which are recently add to the web s
 
 3.1 Use-Case Diagram
 
-![UML](https://user-images.githubusercontent.com/46102435/72824836-f5d20280-3c9b-11ea-872f-56e4d8a00899.PNG)
+![UML](https://user-images.githubusercontent.com/46102435/72825564-45fd9480-3c9d-11ea-9c9c-5c0819e1bd55.PNG)
 
 # 4.	Online Shopping Application
 
