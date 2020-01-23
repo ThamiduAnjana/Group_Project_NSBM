@@ -343,7 +343,7 @@
 				  <br>
 				  <div class="row"><!-- 5 row Text Boxes to insert data (Supplier) START-->
 				    <div class="col">
-				      <input type="text" class="form-control" placeholder="Item Description" name="itemdes" value="" style="width: 47rem;">
+				      <input type="text" class="form-control" placeholder="Item Description (Words 20)" name="itemdes" value="" style="width: 47rem;">
 				    </div>
 				  </div><!-- 5 row Text Boxes to insert data (Supplier) END-->
 			  </div>
@@ -454,6 +454,102 @@
 			<!-- Data Table of Item Details(Supplier) END-->
 	      </div>
 	      <!--Fifth tab End-->
+	      <!-- six tab Start -->
+	      <div class="tab-pane fade" id="v-pills-OrderDetails" role="tabpanel" aria-labelledby="v-pills-OrderDetails-tab">
+			<!-- Data Table Dtails -->
+			<h3><span class="badge badge-secondary">Data Table Of Order Details ..</span></h3>
+			<!-- Data Table of Item Details(Supplier) START-->
+				<div data-spy="scroll" class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+							    <td scope="col" class="alert alert-secondary">P. Code</td>
+							    <td scope="col" class="alert alert-secondary">I. Code</td>
+							    <td scope="col" class="alert alert-secondary">I. Name</td>
+							    <td scope="col" class="alert alert-secondary">I. Quantity</td>
+							    <td scope="col" class="alert alert-info">I. Amount</td>
+							    <td scope="col" class="alert alert-secondary">P. Date</td>
+							    <td scope="col" class="alert alert-secondary">U. Code</td>
+							    <td scope="col" class="alert alert-secondary">O.Verify</td>
+							</tr>
+						</thead>
+						<tbody>
+								
+							<!-- Get data in databse for table (Start) -->
+							<?php 
+								//first query (that you want to select)
+								$query_p = "SELECT * FROM `perchase_history` WHERE seller_id = $uid AND verification != 'Ok' ORDER BY p_id DESC;";
+								//$query = "SELECT * FROM `items_details` WHERE u_id = $uid;";
+								//query execute
+								$result = mysqli_query($db, $query_p);  
+								//Add while loop for first column data display and after display next column
+								while ($row = mysqli_fetch_array($result)) { 
+									$ubid = $row['u_id'];
+							?>
+							<!-- Get data in databse for table (End) -->
+							<tr>
+								<td class="alert alert-secondary"><?= $row['p_id']?></td>
+								<td><?= $row['it_code']?></td>
+								<td><?= $row['it_name']?></td>
+								<td><?= $row['it_qty']?></td>
+								<td>Rs.<?= $row['it_amount']?></td>
+								<td><?= $row['it_date']?></td>
+								<td><?= $row['u_id']?></td>
+								<td>
+									<div class="row">
+									<form method="POST" action="../actions/ordervarification.php" >
+										<input type="text" name="pid" value="<?= $row['p_id']?>" hidden>
+										<button type="submit" class="btn btn-success">
+											<i class="far fa-check-circle"></i>
+										</button>
+									</form>
+									</div>
+								</td>
+							<?php 
+								} 
+							?>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			<!-- Data Table of Item Details(Supplier) END-->
+			<br>
+			<h3><span class="badge badge-secondary">Data Table Of Customer Details ..</span></h3>
+			<!-- Data Table of Item Details(Supplier) START-->
+				<div data-spy="scroll" class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+							    <td scope="col" class="alert alert-secondary">U. Code</td>
+							    <td scope="col" class="alert alert-secondary">U. Name</td>
+							    <td scope="col" class="alert alert-secondary">U. Addreess</td>
+							    <td scope="col" class="alert alert-secondary">U. Contact No</td>
+							</tr>
+						</thead>
+						<tbody>
+							<?php 
+							if(isset($ubid)){
+								//first query (that you want to select)
+								$query_p1 = "SELECT * FROM `users_details` WHERE u_id = $ubid;";
+								//$query = "SELECT * FROM `items_details` WHERE u_id = $uid;";
+								//query execute
+								$result = mysqli_query($db, $query_p1);  
+								//Add while loop for first column data display and after display next column
+								while ($row = mysqli_fetch_array($result)) { 
+									$username = $row['u_fname'];
+							?>
+								<td><?= $row['u_id']?></td>
+								<td><?= $row['u_fname']?></td>
+								<td><?= $row['u_addressl1']." ".$row['u_addressl2']." ".$row['u_city']." ".$row['u_postalcode']." ".$row['u_province']." ".$row['u_country']?></td>
+								<td><?= $row['u_contactno']?></td>
+							<?php } }?>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			<!-- Data Table of Item Details(Supplier) END-->
+	      </div>
+	      <!-- six tab End -->
 	    </div>
 	  </div>
 	  <div class="col-3">
@@ -478,6 +574,7 @@
 				}else{
 					?>
 						<a class="nav-link" id="v-pills-AddNewItems-tab" data-toggle="pill" href="#v-pills-AddNewItems" role="tab" aria-controls="v-pills-AddNewItems" aria-selected="false">Add New Items</a>
+						<a class="nav-link" id="v-pills-OrderDetails-tab" data-toggle="pill" href="#v-pills-OrderDetails" role="tab" aria-controls="v-pills-OrderDetails" aria-selected="false">Order Details</a>
 					<?php
 				}
 			}

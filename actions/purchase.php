@@ -29,11 +29,12 @@
 		$date = date("Y/m/d");
 
 		//two query (that you want to select)
-		$query_two = "SELECT `it_name`, `it_price`, `it_upprice`,`it_qty`,`it_rating`,`it_sold` FROM `items_details` WHERE it_code = $itemcode;";
+		$query_two = "SELECT `u_id`,`it_name`, `it_price`, `it_upprice`,`it_qty`,`it_rating`,`it_sold` FROM `items_details` WHERE it_code = $itemcode;";
 		//query execute
 		$result = mysqli_query($db, $query_two);  
 		//Add while loop for first column data display and after display next column
 		while ($row = mysqli_fetch_array($result)) {
+			$usid = $row['u_id'];
 			$itname = $row['it_name'];
 			$itqty = $row['it_qty'];
 			$itsold = $row['it_sold'];
@@ -64,7 +65,7 @@
 			$price = $price * $qty;
 		}
 		//four query (that you want to insert)
-		$query_four = "INSERT INTO `perchase_history`(`it_code`, `it_name`, `it_qty`, `it_amount`, `it_date`, `u_id`) VALUES ($itemcode,'$itname',$qty,$price,'$date',$uid)";
+		$query_four = "INSERT INTO `perchase_history`(`it_code`, `it_name`, `it_qty`, `it_amount`, `it_date`, `u_id`,`seller_id`) VALUES ($itemcode,'$itname',$qty,$price,'$date',$uid,'$usid')";
 		//query execute
 		mysqli_query($db, $query_four);
 
